@@ -34,10 +34,10 @@
     "@modern-js/plugin-testing": "1.21.0",
     "@modern-js/tsconfig": "1.21.0",
     "@modern-js/utils": "1.21.0",
-    "@modern-js/codesmith": "1.6.3",
-    "@modern-js/codesmith-api-app": "1.6.3",
-    "@modern-js/codesmith-formily": "1.6.3",
-    "@modern-js/easy-form-core": "1.6.3",
+    "@modern-js/codesmith": "1.6.4-alpha.3",
+    "@modern-js/codesmith-api-app": "1.6.4-alpha.3",
+    "@modern-js/codesmith-formily": "1.6.4-alpha.3",
+    "@modern-js/easy-form-core": "1.6.4-alpha.3",
     "@types/jest": "^27",
     "@types/node": "^14",
     "jest": "^27",
@@ -49,5 +49,10 @@
     "main": "./dist/index.js",
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "pnpm": {
+    "overrides": {
+      "chalk": "4.1.2"
+    }
   }
 }
