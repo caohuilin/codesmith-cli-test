@@ -1,71 +1,53 @@
 {
-  "name": "codesmith-cli",
+  "name": "@modernjs-test/codesmith-cli",
   "version": "0.1.0",
   "jsnext:source": "./src/index.ts",
   "types": "./dist/types/index.d.ts",
-  "main": "./dist/js/node/index.js",
-  "module": "./dist/js/treeshaking/index.js",
-  "jsnext:modern": "./dist/js/modern/index.js",
-  "scripts": {
-    "prepare": "modern build && husky install",
-    "prepublishOnly": "modern build --platform",
-    "dev": "modern dev",
-    "build": "modern build",
-    "reset": "rimraf ./**/node_modules",
-    "lint": "modern lint",
-    "change": "modern change",
-    "bump": "modern bump",
-    "pre": "modern pre",
-    "change-status": "modern change-status",
-    "gen-release-note": "modern gen-release-note",
-    "release": "modern release",
-    "new": "modern new",
-    "test": "modern test --passWithNoTests",
-    "upgrade": "modern upgrade"
+  "main": "./dist/index.js",
+  "bin": {
+    "create": "./bin/run.js"
   },
-  "engines": {
-    "node": ">=14.17.6"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "node --max_old_space_size=8192 ./node_modules/eslint/bin/eslint.js --fix --color --cache --quiet"
-    ],
-    "*.{js,jsx,mjs,mjsx,cjs,cjsx}": [
-      "node --max_old_space_size=8192 ./node_modules/eslint/bin/eslint.js --fix --color --cache --quiet"
-    ]
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "dist/"
+  "files": [
+    "/bin",
+    "/dist/index.js"
   ],
-  "dependencies": {
-    "@babel/runtime": "^7.18.0"
+  "exports": {
+    ".": {
+      "node": {
+        "jsnext:source": "./src/index.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "default": "./dist/index.js"
+    }
   },
-  "peerDependencies": {
-    "react": "^17"
+  "scripts": {
+    "prepare": "pnpm build",
+    "new": "modern new",
+    "build": "modern build",
+    "test": "modern test",
+    "release": "modern release"
   },
   "devDependencies": {
-    "react": "^17",
+    "@babel/runtime": "^7.18.0",
     "@modern-js/module-tools": "1.21.0",
     "@modern-js/plugin-testing": "1.21.0",
     "@modern-js/tsconfig": "1.21.0",
-    "rimraf": "^3.0.2",
-    "lint-staged": "^11.2.6",
-    "prettier": "^2.6.2",
-    "husky": "^8",
-    "typescript": "^4",
-    "@types/jest": "^26.0.9",
+    "@modern-js/utils": "1.21.0",
+    "@modern-js/codesmith": "1.6.3",
+    "@modern-js/codesmith-api-app": "1.6.3",
+    "@modern-js/codesmith-formily": "1.6.3",
+    "@modern-js/easy-form-core": "1.6.3",
+    "@types/jest": "^27",
     "@types/node": "^14",
-    "@types/react": "^17"
+    "jest": "^27",
+    "ts-node": "^10.1.0",
+    "typescript": "^4"
   },
-  "sideEffects": [
-    "*.css",
-    "*.less",
-    "*.sass",
-    "*.scss"
-  ],
+  "sideEffects": false,
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "main": "./dist/index.js",
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
